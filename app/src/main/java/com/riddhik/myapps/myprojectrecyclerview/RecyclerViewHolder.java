@@ -14,7 +14,6 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
     ImageView movie_poster;
     TextView movie_name;
-    Context mContext;
 
     public RecyclerViewHolder(View itemView) {
         super(itemView);
