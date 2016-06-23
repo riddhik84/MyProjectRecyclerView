@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.squareup.picasso.Picasso;
 
 /**
  * Created by rkakadia on 6/22/2016.
@@ -18,7 +19,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
 
     String[] movie_names = {"The Martian", "Captain America", "WarCraft", "Batman v Superman",
             "X-man: Apocalypse", "The Conjuring 2", "Finding Dory", "Deadpool", "The Jungle Book", "The Independence Day 2"};
-    int[] movie_images = {R.drawable.the_martian, R.drawable.captain_america, R.drawable.warcraft, R.drawable.batman_v_superman,
+    int[] movie_images = {R.drawable.the_martian, R.drawable.captain_america, R.drawable.warcraft, R.drawable.batman_vs_superman,
             R.drawable.x_man, R.drawable.conjuring_2, R.drawable.finding_dory, R.drawable.deadpool,
             R.drawable.jungle_book, R.drawable.independence_day};
 
@@ -42,11 +43,21 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
         holder.movie_name.setText(movie_names[position]);
         //holder.movie_poster.setImageResource(movie_images[position]);
-        Glide.with(context)
+
+        //Cannot use Glide here as setTag cannot be used with Glide.
+        //Glide.with(context)
+                //.load(movie_images[position])
+                //.centerCrop()
+                //.crossFade()
+                //.diskCacheStrategy(DiskCacheStrategy.ALL)
+                //.into(holder.movie_poster);
+
+        Picasso.with(context)
                 .load(movie_images[position])
+                .noFade()
+                //.fit()
+                .resize(500, 600)
                 .centerCrop()
-                .crossFade()
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.movie_poster);
 
         holder.movie_poster.setOnClickListener(clickListener);

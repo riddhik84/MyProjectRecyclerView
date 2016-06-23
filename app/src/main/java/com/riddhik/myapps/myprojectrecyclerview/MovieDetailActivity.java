@@ -9,6 +9,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+
 public class MovieDetailActivity extends AppCompatActivity {
 
     ImageView imageView;
@@ -30,11 +33,16 @@ public class MovieDetailActivity extends AppCompatActivity {
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
+        imageView = (ImageView) findViewById(R.id.movie_detail_view);
+
         Intent intent = getIntent();
         int imageResource = intent.getIntExtra("MovieImage", 0);
         if(imageResource != 0) {
-            imageView = (ImageView) findViewById(R.id.movie_detail_view);
-            imageView.setImageResource(imageResource);
+            //imageView.setImageResource(imageResource);
+            Glide.with(this)
+                    .load(imageResource)
+                    .into(imageView);
         }
     }
 
