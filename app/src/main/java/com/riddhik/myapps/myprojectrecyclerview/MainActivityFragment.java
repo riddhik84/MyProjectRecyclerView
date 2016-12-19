@@ -32,7 +32,7 @@ public class MainActivityFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);
 
         //Apply GridLayout
-        mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
 
         //Apply LinearLayout
         //mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
