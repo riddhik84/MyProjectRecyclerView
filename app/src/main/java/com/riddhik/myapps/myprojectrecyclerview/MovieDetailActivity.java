@@ -38,7 +38,7 @@ public class MovieDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         int imageResource = intent.getIntExtra("MovieImage", 0);
-        if(imageResource != 0) {
+        if (imageResource != 0) {
             //imageView.setImageResource(imageResource);
             Glide.with(this)
                     .load(imageResource)
